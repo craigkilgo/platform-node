@@ -1,0 +1,13 @@
+.row
+.card
+    h3 hash of random values
+    table
+        thead
+        tr
+            th hash
+            th value
+        tbody
+        each val in randomValues
+            tr
+            td=val.name
+            td=val.value

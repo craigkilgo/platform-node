@@ -1,0 +1,131 @@
+extends layout
+
+block content
+  .container
+    h1 Research Project CISS - Node
+    hr
+    .row
+      .card
+        h3 graph
+        span Shortest path from "Carlos <span style="color: #4286f4; font-weight:bold;">(6)</span>" to "Matthew <span style="color: #ff2da0; font-weight:bold;">(77)</span>":
+        br
+        span #{graph.path}
+        #graph-container
+    .row
+      .card
+        h3 hash of random values
+        table
+          thead
+            tr
+              th hash
+              th value
+          tbody
+            each fif in fifty
+              tr
+                td #{fif.hash}
+                td #{fif.value}
+    .row
+      .card
+        h3 sorted names
+        table
+          thead
+            tr
+              th #
+              th id
+              th name
+          tbody
+            each n, index in names
+              tr
+                td=index+1
+                td #{n._id}
+                td #{n.name}
+    .row
+      .card
+        h3 20 random value
+        h4 max: #{minmax.max}
+        h4 min: #{minmax.min}
+        table
+          thead
+            tr
+              th value
+          tbody
+            each v in minmax.values
+              tr
+                td=v
+    .row
+      .card
+        h3 primes under 500
+        #primes
+          each p, i in primes
+            div #{p}
+    .row
+      .card
+        h3 string pairs and check for hash
+        h5 hash: acb80281e4e94213c7452a81fa08f61893eff5ffa62d50876da8d1fed4710d95
+        h5 result: #{pairsBool}
+        table
+          thead
+            tr
+              th string1
+              th string2
+          tbody
+            tr
+              td ethereal
+              td front
+            tr
+              td ask
+              td release
+            tr
+              td bucket
+              td unique
+            tr
+              td plug
+              td average
+            tr
+              td trade
+              td weather
+            tr
+              td card
+              td wide
+            tr
+              td numberless
+              td copper
+            tr
+              td fruit
+              td example
+            tr
+              td slap
+              td pause
+            tr
+              td jittery
+              td confused
+    .row
+      .card
+        h3 database insert
+        | &#x9;The following value was inserted into the
+        span(style='font-weight:bold;') &quot;transactions&quot;
+        |  table:
+        br
+        span(style='font-weight:bold;') customer:
+        |  Walter Hagen
+        br
+        span(style='font-weight:bold;') item:
+        |  niblick
+        br
+        span(style='font-weight:bold;') price:
+        |  $6.00
+        br
+
+  script(type='text/javascript').
+    var x = !{JSON.stringify(graph)}
+    console.log(x);
+    s = new sigma({
+      graph: x,
+      container: 'graph-container'
+    });
+    var n1 = s.graph.nodes('6');
+    n1.color = '#4286f4';
+
+    var n2 = s.graph.nodes('77');
+    n2.color = '#ff2da0';
+    s.refresh({ skipIndexation: true });
